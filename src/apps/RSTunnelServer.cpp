@@ -21,4 +21,18 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-
  */
 
-int tun_alloc(const char *dev, int flags) ;
+	char tun_name[IFNAMSIZ];
+  	fd_set fds_r;
+  	fd_set fds_e;
+   ip4_t* ip_head;
+
+  /* Connect to the device */
+  tun_in=tun_alloc("lab0", IFF_TUN/*|IFF_NO_PI*/ );  /* tun interface */
+
+  int nread;
+  unsigned char *buffer=(unsigned char*)malloc(65540);
+
+  if((tun_in < 0)){
+    perror("Allocating interface");
+    exit(1);
+  }

@@ -1,7 +1,11 @@
 /*
- * Labyrinthus network protocol. http://labyrinthus.org
+ * Labyrinthus. Network protocol. http://labyrinthus.org
  *
- * Copyright (c) 2013 Alchemista IT-Consulting, Corp. <administrator@alchemista.info>
+ * Copyright (c) 2013 Alchemista IT-Consulting, Corp. 
+ *
+ * Functional diagram by Alexey Vokhmyanin <alchemista@alchemista.info>
+ *
+ * Written by Alexey Orlov <development@alchemista.info>
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License version 3 as
@@ -9,12 +13,12 @@
  *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public Licens
  * along with this program; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-
+ * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-
  */
 
 #include "rs_defines.h"
@@ -39,11 +43,6 @@ const char* structs[]={
 NULL,NULL
 };
 
-void print_ip4(in_addr ip){
-	unsigned char* ips=(unsigned char*)&ip;
-	printf("%d.%d.%d.%d",ips[0],ips[1],ips[2],ips[3]);
-}
-
 const char** getDefinedStructs(){
 return (const char**)structs;
 
@@ -52,7 +51,6 @@ return (const char**)structs;
 RSSObject* createRSSObjectWithType(const char* name){
 	return new RSSObject((const char**)&structs,name);
 }
-
 
 
 void randomize(){
